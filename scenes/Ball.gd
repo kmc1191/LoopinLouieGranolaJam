@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
 var win_size : Vector2
-const START_SPEED : int = 300
+const START_SPEED : int = 500
 const ACCEL : int = 50
 var speed : int
 var dir : Vector2
 const MAX_Y_VECTOR : float = 0.6
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,23 +14,23 @@ func _ready():
 func new_ball():
 	#randomize start position and direction
 	position.x = win_size.x / 2
-	position.y = randi_range(400, win_size.y - 600)
+	position.y = randi_range(200, win_size.y - 200)
 	speed = START_SPEED
 	dir = random_direction()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta)
-	if(!collision):
-		velocity.y += (get_gravity()*0.3) * delta
-	else:
-		var collider
+	var collider
+	if collision:
 		collider = collision.get_collider()
-		dir = dir.bounce(collision.get_normal())
-		velocity.y = JUMP_VELOCITY
-		
-	move_and_slide()
+		#if ball hits paddle
+		if collider == $"../Player" or collider == $"../CPU":
+			speed += ACCEL
+			dir = new_direction(collider)
+		#if it hits a wall
+		else:
+			dir = dir.bounce(collision.get_normal())
 
 func random_direction():
 	var new_dir := Vector2()
