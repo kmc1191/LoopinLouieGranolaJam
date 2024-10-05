@@ -26,7 +26,7 @@ size = Vector2(238, 30)
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(5, 8)
+position = Vector2(36, -94)
 texture = ExtResource("1_nmwho")
 centered = false
 script = ExtResource("2_2vu7i")
@@ -48,7 +48,6 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("RectangleShape2D_croqj")
@@ -79,28 +78,26 @@ shape = SubResource("RectangleShape2D_4i124")
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="PlayerScore" type="Label" parent="Hud"]
-offset_left = 438.0
-offset_top = 25.0
-offset_right = 488.0
-offset_bottom = 78.0
+offset_left = 469.0
+offset_top = -77.0
+offset_right = 519.0
+offset_bottom = -24.0
 theme_override_fonts/font = ExtResource("2_4g85s")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CPUScore" type="Label" parent="Hud"]
-offset_left = 703.0
-offset_top = 25.0
-offset_right = 753.0
-offset_bottom = 78.0
+offset_left = 734.0
+offset_top = -77.0
+offset_right = 784.0
+offset_bottom = -24.0
 theme_override_fonts/font = ExtResource("2_4g85s")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
@@ -118,7 +115,6 @@ offset_left = 290.0
 offset_top = 479.0
 offset_right = 432.0
 offset_bottom = 519.0
-metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
