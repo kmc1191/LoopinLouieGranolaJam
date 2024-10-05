@@ -11,9 +11,11 @@ func _on_score_left_body_entered(body):
 	#$Hud/CPUScore.text = str(score[1])
 	#$BallTimer.start()
 	$Louie.turn_around()
+	$Louie.jump()
 
 func _on_score_right_body_entered(body):
 	#score[0] += 1
 	#$Hud/PlayerScore.text = str(score[0])
 	#$BallTimer.start()
 	$Louie.turn_around()
+	$Louie.jump()
