@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=14 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
 [ext_resource type="Script" path="res://scenes/Ball.gd" id="4_18rf6"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
+[ext_resource type="Script" path="res://scenes/louie.gd" id="6_ywhtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_croqj"]
 size = Vector2(10, 10)
@@ -24,9 +25,12 @@ size = Vector2(141.5, 40.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5r8ph"]
 size = Vector2(238, 30)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l377s"]
+size = Vector2(38, 37)
+
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(36, -94)
+position = Vector2(-3, 5)
 texture = ExtResource("1_nmwho")
 centered = false
 script = ExtResource("2_2vu7i")
@@ -42,14 +46,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = 395.0
+offset_top = 348.0
+offset_right = 405.0
+offset_bottom = 358.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(375, 339)
 shape = SubResource("RectangleShape2D_croqj")
 
 [node name="Borders" type="StaticBody2D" parent="."]
@@ -78,26 +84,28 @@ shape = SubResource("RectangleShape2D_4i124")
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="PlayerScore" type="Label" parent="Hud"]
-offset_left = 469.0
-offset_top = -77.0
-offset_right = 519.0
-offset_bottom = -24.0
+offset_left = 450.0
+offset_top = 202.0
+offset_right = 500.0
+offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("2_4g85s")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CPUScore" type="Label" parent="Hud"]
-offset_left = 734.0
-offset_top = -77.0
-offset_right = 784.0
-offset_bottom = -24.0
+offset_left = 715.0
+offset_top = 202.0
+offset_right = 765.0
+offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("2_4g85s")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
@@ -115,12 +123,27 @@ offset_left = 290.0
 offset_top = 479.0
 offset_right = 432.0
 offset_bottom = 519.0
+metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(360, 535)
 shape = SubResource("RectangleShape2D_5r8ph")
+
+[node name="Louie" type="CharacterBody2D" parent="."]
+script = ExtResource("6_ywhtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Louie"]
+position = Vector2(578, 190)
+shape = SubResource("RectangleShape2D_l377s")
+
+[node name="ColorRect" type="ColorRect" parent="Louie"]
+offset_left = 558.0
+offset_top = 171.0
+offset_right = 596.0
+offset_bottom = 208.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
