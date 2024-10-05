@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
+@onready var child_sprite = $LouieSprite
 var win_size : Vector2
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var direction : int = 1
 
+
 func _ready():
 	win_size = get_viewport_rect().size
+	child_sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -20,7 +23,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func turn_around():
+	if(direction==-1):
+		child_sprite.flip_h = true
+	else:
+		child_sprite.flip_h = false
 	direction *= -1
 	
 func jump():
-	velocity.y = -150
+	velocity.y = -110
