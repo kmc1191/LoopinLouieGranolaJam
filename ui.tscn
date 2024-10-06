@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1tvo8c6klabx"]
+
+[ext_resource type="Script" path="res://canvas_layer.gd" id="1_o71cd"]
+[ext_resource type="Texture2D" uid="uid://cb4uvv4ucptp5" path="res://assets/transparent-restart-button-red-button-with-restoart-in-white-and-1710925364835.webp" id="2_5s5t0"]
+[ext_resource type="Texture2D" uid="uid://laijn71rfutu" path="res://assets/png-clipart-blue-and-green-arcade-machine-illustration-retro-arcade-games-vintage-gear-thumbnail-2.png" id="3_r70wm"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_o71cd")
+
+[node name="endScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="RestartButton" type="Button" parent="endScreen"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 490.0
+offset_top = 438.0
+offset_right = 666.0
+offset_bottom = 607.0
+
+[node name="Sprite2D" type="Sprite2D" parent="endScreen/RestartButton"]
+position = Vector2(297, 63)
+scale = Vector2(0.465, 0.488889)
+texture = ExtResource("2_5s5t0")
+
+[node name="EndGameScoreDisplay" type="Node2D" parent="endScreen"]
+
+[node name="Sprite2D" type="Sprite2D" parent="endScreen/EndGameScoreDisplay"]
+position = Vector2(264, 370)
+scale = Vector2(1.40805, 1.15505)
+texture = ExtResource("3_r70wm")
+
+[node name="PlayerWonDisplay" type="Label" parent="endScreen/EndGameScoreDisplay"]
+offset_left = 143.0
+offset_top = 204.0
+offset_right = 384.0
+offset_bottom = 340.0
+theme_override_font_sizes/font_size = 22
+text = "Player [insert] won! 
+Congratulations"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="endScreen/RestartButton" to="." method="_on_restart_button_pressed"]

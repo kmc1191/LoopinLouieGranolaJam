@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=18 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
+[ext_resource type="PackedScene" uid="uid://b1tvo8c6klabx" path="res://ui.tscn" id="3_e105d"]
 [ext_resource type="Script" path="res://scenes/Ball.gd" id="4_18rf6"]
 [ext_resource type="Script" path="res://scenes/hay_bail_2.gd" id="5_faruf"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
@@ -39,6 +40,8 @@ position = Vector2(2, 9)
 texture = ExtResource("1_nmwho")
 centered = false
 script = ExtResource("2_2vu7i")
+
+[node name="UI" parent="." instance=ExtResource("3_e105d")]
 
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(576, 324)
@@ -185,7 +188,7 @@ texture = ExtResource("7_s1a3i")
 [connection signal="body_entered" from="WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="WallRight" to="." method="_on_wall_right_hit"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
-[connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
-[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
