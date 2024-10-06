@@ -1,10 +1,16 @@
 extends Sprite2D
 
 var gameStarted = false
-var score := [1, 1]# 0:Player, 1: Player 2
+var score := [3, 3]# 0:Player, 1: Player 2
 
 @onready var endGameScreen = $endScreen
 @onready var ui = $UI
+@onready var chicken_1_green = $mainGameScreen/Coop1/Chicken1
+@onready var chicken_2_green = $mainGameScreen/Coop1/Chicken2
+@onready var chicken_3_green = $mainGameScreen/Coop1/Chicken3
+
+var chicken_up_texture = preload("res://assets/Chicken.png")
+var poof_texture = preload("res://assets/Poof.png")
 
 func _ready():
 	ui.game_started.connect(game_started)
@@ -32,6 +38,14 @@ func game_restarted():
 	$mainGameScreen/Louie.gameStarted = true
 	$mainGameScreen/HayBail1.gameStarted = true
 	$mainGameScreen/HayBail2.gameStarted = true
+	
+	# reset chickens
+	chicken_1_green.visible = true
+	chicken_2_green.visible = true
+	chicken_3_green.visible = true
+	chicken_1_green.texture = chicken_up_texture
+	chicken_2_green.texture = chicken_up_texture
+	chicken_3_green.texture = chicken_up_texture
 
 func _on_wall_left_hit(body):
 	$mainGameScreen/Louie.turn_around()
@@ -53,6 +67,16 @@ func _on_coop_1_area_body_entered(body: Node2D) -> void:
 		if(score[0] == 0):
 			_end_game(2)
 		$mainGameScreen/Louie.jump()
+		
+		# Make chickens poof
+		if score[0] == 2:
+			chicken_1_green.texture = poof_texture
+			await get_tree().create_timer(0.75).timeout
+			chicken_1_green.visible = false
+		elif score[0] == 1:
+			chicken_2_green.texture = poof_texture
+			await get_tree().create_timer(0.75).timeout
+			chicken_2_green.visible = false
 
 func _on_coop_2_area_body_entered(body: Node2D) -> void:
 	if body.name == "Louie":

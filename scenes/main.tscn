@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=25 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
 [ext_resource type="PackedScene" uid="uid://b1tvo8c6klabx" path="res://ui.tscn" id="3_e105d"]
+[ext_resource type="Script" path="res://scenes/Ball.gd" id="4_18rf6"]
 [ext_resource type="Script" path="res://scenes/hay_bail_2.gd" id="5_faruf"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
 [ext_resource type="Script" path="res://scenes/louie.gd" id="6_ywhtm"]
@@ -11,7 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://4rvgy75v4a7e" path="res://assets/HaybaleStationary.png" id="7_j3wml"]
 [ext_resource type="Texture2D" uid="uid://cqtsvde61ffol" path="res://assets/Louie.png" id="7_s1a3i"]
 [ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="9_wn6j5"]
+[ext_resource type="Texture2D" uid="uid://rmerivlot46b" path="res://assets/Chicken2.png" id="11_o4juc"]
 [ext_resource type="Texture2D" uid="uid://c8c1tun64ja52" path="res://assets/BlueSpringDown.png" id="12_o8mfc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_croqj"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4i124"]
 size = Vector2(51.9999, 647.75)
@@ -49,6 +54,29 @@ script = ExtResource("2_2vu7i")
 
 [node name="mainGameScreen" type="Node2D" parent="."]
 visible = false
+
+[node name="Ball" type="CharacterBody2D" parent="mainGameScreen"]
+position = Vector2(576, 324)
+collision_mask = 3
+script = ExtResource("4_18rf6")
+
+[node name="ColorRect" type="ColorRect" parent="mainGameScreen/Ball"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 395.0
+offset_top = 348.0
+offset_right = 405.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Ball"]
+position = Vector2(375, 339)
+shape = SubResource("RectangleShape2D_croqj")
 
 [node name="WallLeft" type="Area2D" parent="mainGameScreen"]
 
@@ -203,6 +231,25 @@ position = Vector2(2.94037, -24.0625)
 scale = Vector2(0.186804, 0.200664)
 texture = ExtResource("9_wn6j5")
 
+[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1"]
+position = Vector2(61, -2.99998)
+scale = Vector2(0.102, 0.102)
+
+[node name="Chicken3" type="Sprite2D" parent="mainGameScreen/Coop1"]
+position = Vector2(71, 3)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
+[node name="Chicken2" type="Sprite2D" parent="mainGameScreen/Coop1"]
+position = Vector2(51, 18)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
+[node name="Chicken1" type="Sprite2D" parent="mainGameScreen/Coop1"]
+position = Vector2(33, 38)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
 [node name="Spring" type="Sprite2D" parent="mainGameScreen"]
 show_behind_parent = true
 position = Vector2(356, 536)
@@ -220,11 +267,11 @@ texture = ExtResource("12_o8mfc")
 [connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
 [connection signal="timeout" from="mainGameScreen/BallTimer" to="." method="_on_ball_timer_timeout"]
-[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]
-[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
