@@ -13,6 +13,7 @@ var down_texture = preload("res://assets/HaybaleDown.png")
 var spring_down = preload("res://assets/BlueSpringDown.png")
 var spring_up = preload("res://assets/BlueSpringExtended.png")
 
+var gameStarted = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -20,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_key_pressed(KEY_ENTER) and is_on_floor():
+	if Input.is_key_pressed(KEY_ENTER) and is_on_floor() and gameStarted:
 		velocity.y = JUMP_VELOCITY
 	
 	# Change animations

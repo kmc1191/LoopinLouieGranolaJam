@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
+var gameStarted = false
+
 @onready var haybail_sprite = $Sprite2D
 @onready var spring_sprite = $"../Spring"
 
@@ -19,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_key_pressed(KEY_SPACE) and is_on_floor():
+	if Input.is_key_pressed(KEY_SPACE) and is_on_floor() and gameStarted:
 		velocity.y = JUMP_VELOCITY
 	
 	# Change animations

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1tvo8c6klabx"]
+[gd_scene load_steps=7 format=3 uid="uid://b1tvo8c6klabx"]
 
 [ext_resource type="Script" path="res://canvas_layer.gd" id="1_o71cd"]
-[ext_resource type="Texture2D" uid="uid://cb4uvv4ucptp5" path="res://assets/transparent-restart-button-red-button-with-restoart-in-white-and-1710925364835.webp" id="2_5s5t0"]
+[ext_resource type="Texture2D" uid="uid://cch07pt1wd8u3" path="res://assets/604384-200.png" id="2_1358k"]
 [ext_resource type="Texture2D" uid="uid://laijn71rfutu" path="res://assets/png-clipart-blue-and-green-arcade-machine-illustration-retro-arcade-games-vintage-gear-thumbnail-2.png" id="3_r70wm"]
+[ext_resource type="Texture2D" uid="uid://blpgibi0tttkc" path="res://assets/224-2243342_replay-button-play-again-button-pixel.png.jpeg" id="4_iq0od"]
+[ext_resource type="Texture2D" uid="uid://b5nbrd5dsw06t" path="res://assets/pngtree-yellow-play-start-button-for-video-game-with-white-playful-text-vector-png-image_10168531.png" id="5_ygsi0"]
+[ext_resource type="Texture2D" uid="uid://c0r3p2iardk1" path="res://assets/images.jpeg" id="6_qdr3k"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_o71cd")
@@ -10,17 +13,17 @@ script = ExtResource("1_o71cd")
 [node name="endScreen" type="Node2D" parent="."]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="endScreen"]
-position = Vector2(937, 368)
-scale = Vector2(0.465, 0.488889)
-texture = ExtResource("2_5s5t0")
-
-[node name="RestartButton" type="Button" parent="endScreen"]
+[node name="HomeScreenButton" type="Button" parent="endScreen"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 848.0
-offset_top = 280.0
-offset_right = 1024.0
-offset_bottom = 449.0
+offset_left = 994.0
+offset_top = 518.0
+offset_right = 1092.0
+offset_bottom = 608.0
+
+[node name="Sprite2D" type="Sprite2D" parent="endScreen/HomeScreenButton"]
+position = Vector2(48, 46)
+scale = Vector2(0.4425, 0.419444)
+texture = ExtResource("2_1358k")
 
 [node name="EndGameScoreDisplay" type="Node2D" parent="endScreen"]
 
@@ -39,4 +42,41 @@ text = "Player [insert] won!
 Congratulations"
 horizontal_alignment = 1
 
+[node name="RestartButton" type="Button" parent="endScreen"]
+offset_left = 928.0
+offset_top = 272.0
+offset_right = 1096.0
+offset_bottom = 412.0
+
+[node name="Sprite2D" type="Sprite2D" parent="endScreen/RestartButton"]
+position = Vector2(84, 75.5625)
+scale = Vector2(0.202439, 0.387455)
+texture = ExtResource("4_iq0od")
+
+[node name="beforeScreen" type="Node2D" parent="."]
+
+[node name="playButton" type="Button" parent="beforeScreen"]
+offset_left = 450.0
+offset_top = 190.0
+offset_right = 760.0
+offset_bottom = 452.0
+
+[node name="Sprite2D" type="Sprite2D" parent="beforeScreen/playButton"]
+position = Vector2(158, 132)
+texture = ExtResource("5_ygsi0")
+
+[node name="quitGameButton" type="Button" parent="beforeScreen"]
+offset_left = 959.0
+offset_top = 465.0
+offset_right = 1148.0
+offset_bottom = 648.0
+
+[node name="Sprite2D" type="Sprite2D" parent="beforeScreen/quitGameButton"]
+position = Vector2(94.25, 94.75)
+scale = Vector2(0.833333, 0.802222)
+texture = ExtResource("6_qdr3k")
+
+[connection signal="pressed" from="endScreen/HomeScreenButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="endScreen/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="beforeScreen/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="beforeScreen/quitGameButton" to="." method="_on_quit_game_button_pressed"]

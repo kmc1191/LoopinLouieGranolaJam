@@ -6,6 +6,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var direction : int = 1
 
+var gameStarted = false
 
 func _ready():
 	win_size = get_viewport_rect().size
@@ -14,8 +15,9 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
-	velocity += get_gravity()*0.05 * delta
-	velocity.x = 220 * direction
+	if(gameStarted):
+		velocity += get_gravity()*0.05 * delta
+		velocity.x = 220 * direction
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY

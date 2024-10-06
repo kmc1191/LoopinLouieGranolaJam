@@ -1,12 +1,42 @@
 extends Sprite2D
 
-var score := [3, 3]# 0:Player, 1: Player 2
+var gameStarted = false
+
+var score := [1, 1]# 0:Player, 1: Player 2
 const PADDLE_SPEED : int = 500
 
 @onready var endGameScreen = $endScreen
+@onready var ui = $UI
 
 #func _on_ball_timer_timeout():
 	#$Ball.new_ball()
+
+func _ready():
+	ui.game_started.connect(game_started)
+	ui.game_restarted.connect(game_restarted)
+	
+func game_started():
+	gameStarted = true
+	$mainGameScreen.visible = true
+	$mainGameScreen/Hud.visible = true
+	$mainGameScreen/Louie.gameStarted = true
+	$mainGameScreen/HayBail1.gameStarted = true
+	$mainGameScreen/HayBail2.gameStarted = true
+
+	
+func game_restarted():
+	score = [3, 3]
+	$mainGameScreen/Hud/PlayerScore.text = str(score[0])
+	$mainGameScreen/Hud/CPUScore.text = str(score[0])
+	
+	$mainGameScreen/Louie.position.x = 0
+	$mainGameScreen/Louie.position.y = 0
+	
+	$mainGameScreen.visible = true
+	$mainGameScreen/Hud.visible = true
+	$mainGameScreen/Louie.gameStarted = true
+	$mainGameScreen/HayBail1.gameStarted = true
+	$mainGameScreen/HayBail2.gameStarted = true
 
 func _on_wall_left_hit(body):
 	#score[1] += 1
@@ -44,6 +74,11 @@ func _on_coop_2_area_body_entered(body: Node2D) -> void:
 func _end_game(player_won : int):
 	$mainGameScreen.visible = false
 	$mainGameScreen/Hud.visible = false
+	
+	$mainGameScreen/Louie.gameStarted = false
+	$mainGameScreen/HayBail1.gameStarted = false
+	$mainGameScreen/HayBail2.gameStarted = false
+	
 	$UI.on_game_over(player_won)
 	
 
