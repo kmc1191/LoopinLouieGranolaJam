@@ -142,3 +142,8 @@ func _on_Louie_hit_bottom(body: Node2D) -> void:
 func _on_floor_area_body_entered(body: Node2D) -> void:
 	if body.name == "Louie":
 		$mainGameScreen/Louie.jump()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Louie":
+		$mainGameScreen/Louie.jump()

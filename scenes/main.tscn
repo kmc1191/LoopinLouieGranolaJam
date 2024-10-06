@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=25 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://behsc7k8nf7gp" path="res://assets/Background.png" id="1_gl74u"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -39,6 +39,9 @@ size = Vector2(1141, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l377s"]
 size = Vector2(103, 61.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crqja"]
+size = Vector2(1152, 53.25)
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
@@ -268,6 +271,12 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_4g85s")
 text = "ENTER"
 
+[node name="Area2D" type="Area2D" parent="mainGameScreen"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Area2D"]
+position = Vector2(578, 553.625)
+shape = SubResource("RectangleShape2D_crqja")
+
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
@@ -291,3 +300,4 @@ volume_db = -5.0
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop1" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop1/Coop1Area" to="." method="_on_coop_1_area_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/Area2D" to="." method="_on_area_2d_body_entered"]
