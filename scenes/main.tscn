@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=24 format=3 uid="uid://bwgtrk8je4es6"]
 
-[ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
+[ext_resource type="Texture2D" uid="uid://behsc7k8nf7gp" path="res://assets/Background.png" id="1_gl74u"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
 [ext_resource type="PackedScene" uid="uid://b1tvo8c6klabx" path="res://ui.tscn" id="3_e105d"]
@@ -40,15 +40,17 @@ size = Vector2(1141, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l377s"]
 size = Vector2(103, 61.25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvqhn"]
-size = Vector2(174, 242)
-
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
 position = Vector2(2, 9)
-texture = ExtResource("1_nmwho")
+texture = ExtResource("1_gl74u")
 centered = false
 script = ExtResource("2_2vu7i")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(578.5, 327)
+scale = Vector2(1.173, 0.672)
+texture = ExtResource("1_gl74u")
 
 [node name="mainGameScreen" type="Node2D" parent="."]
 visible = false
@@ -178,12 +180,13 @@ position = Vector2(949, 407)
 [node name="Coop2Area" type="Area2D" parent="mainGameScreen/Coop2"]
 position = Vector2(9, 17)
 
-[node name="Coop2CollisionShape" type="CollisionShape2D" parent="mainGameScreen/Coop2/Coop2Area"]
-position = Vector2(38, 103)
-shape = SubResource("RectangleShape2D_fvqhn")
+[node name="Barn2CollisionPolygon" type="CollisionPolygon2D" parent="mainGameScreen/Coop2/Coop2Area"]
+position = Vector2(61.5, 101.984)
+scale = Vector2(8.09896, 4.70898)
+polygon = PackedVector2Array(-13.3968, -13.8001, -1.91383, -30.3642, 7.4701, -20.3832, 7.4701, 14.2314, -12.9029, 15.0809)
 
-[node name="Barn2" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/Coop2CollisionShape"]
-position = Vector2(4.51715, -28.5)
+[node name="Barn2" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area"]
+position = Vector2(42.5172, 74.5)
 scale = Vector2(0.187835, 0.201772)
 texture = ExtResource("9_wn6j5")
 
@@ -208,14 +211,15 @@ position = Vector2(83, 401)
 [node name="Coop1Area" type="Area2D" parent="mainGameScreen/Coop1"]
 position = Vector2(0, 1)
 
-[node name="Coop1CollisionShape" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
-position = Vector2(56, 118)
-shape = SubResource("RectangleShape2D_fvqhn")
-
-[node name="Barn1" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/Coop1CollisionShape"]
-position = Vector2(2.94037, -24.0625)
+[node name="Barn1" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area"]
+position = Vector2(58.9404, 93.9375)
 scale = Vector2(0.186804, 0.200664)
 texture = ExtResource("9_wn6j5")
+
+[node name="Barn1CollisionPolygon" type="CollisionPolygon2D" parent="mainGameScreen/Coop1/Coop1Area"]
+position = Vector2(65, 113.995)
+scale = Vector2(6.19318, 4.07264)
+polygon = PackedVector2Array(-15.0165, -13.749, 0, -33.6379, 11.9486, -23.0796, 11.4642, 18.6624, -14.0477, 18.6624, -15.178, -10.8025)
 
 [node name="Chicken3" type="Sprite2D" parent="mainGameScreen/Coop1"]
 position = Vector2(71, 3)
@@ -243,6 +247,26 @@ show_behind_parent = true
 position = Vector2(791, 536)
 scale = Vector2(0.585, 0.585)
 texture = ExtResource("12_o8mfc")
+
+[node name="SpaceTxt" type="Label" parent="mainGameScreen"]
+offset_left = 316.0
+offset_top = 605.0
+offset_right = 413.0
+offset_bottom = 638.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_4g85s")
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="EnterTxt" type="Label" parent="mainGameScreen"]
+offset_left = 757.0
+offset_top = 603.0
+offset_right = 837.0
+offset_bottom = 626.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_4g85s")
+text = "ENTER"
 
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 

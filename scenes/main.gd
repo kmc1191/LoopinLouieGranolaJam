@@ -12,6 +12,9 @@ var score := [3, 3]# 0:Player, 1: Player 2
 @onready var chicken_2_blue = $mainGameScreen/Coop2/Chicken2
 @onready var chicken_3_blue = $mainGameScreen/Coop2/Chicken3
 
+@onready var enterText = $mainGameScreen/EnterTxt
+@onready var spaceTxt = $mainGameScreen/SpaceTxt
+
 var chicken_up_texture = preload("res://assets/Chicken.png")
 var poof_texture = preload("res://assets/Poof.png")
 
@@ -20,6 +23,8 @@ func _ready():
 	ui.game_started.connect(game_started)
 	ui.game_restarted.connect(game_restarted)
 	
+	
+	
 func game_started():
 	gameStarted = true
 	$mainGameScreen.visible = true
@@ -27,6 +32,10 @@ func game_started():
 	$mainGameScreen/Louie.gameStarted = true
 	$mainGameScreen/HayBail1.gameStarted = true
 	$mainGameScreen/HayBail2.gameStarted = true
+	
+	await get_tree().create_timer(20).timeout
+	enterText.visible=false
+	spaceTxt.visible=false
 
 	
 func game_restarted():
@@ -128,3 +137,8 @@ func _end_game(player_won : int):
 func _on_Louie_hit_bottom(body: Node2D) -> void:
 	if(body.name == "Louie"):
 		$mainGameScreen/Louie.position.y-=100
+
+
+func _on_floor_area_body_entered(body: Node2D) -> void:
+	if body.name == "Louie":
+		$mainGameScreen/Louie.jump()

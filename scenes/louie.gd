@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if(gameStarted):
-		velocity += get_gravity()*0.05 * delta
+		velocity.y += get_gravity().y*0.5 * delta
 		velocity.x = 220 * direction
 
 	move_and_slide()
@@ -24,4 +24,4 @@ func turn_around():
 	direction *= -1
 	
 func jump():
-	velocity.y = -90
+	velocity.y = -300
