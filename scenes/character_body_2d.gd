@@ -7,8 +7,6 @@ const JUMP_VELOCITY = -600.0
 @onready var haybail_sprite = $Sprite2D
 @onready var spring_sprite = $"../Spring"
 
-var spring_global_position = Vector2()
-
 var idle_texture = preload("res://assets/HaybaleStationary.png")
 var up_texture = preload("res://assets/HaybaleUp.png")
 var down_texture = preload("res://assets/HaybaleDown.png")
