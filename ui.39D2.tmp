@@ -93,15 +93,8 @@ texture = ExtResource("8_eumqu")
 stream = ExtResource("7_juq5x")
 volume_db = 1.5
 
-[connection signal="mouse_entered" from="endScreen/HomeScreenButton" to="." method="_on_home_screen_button_mouse_entered"]
-[connection signal="mouse_exited" from="endScreen/HomeScreenButton" to="." method="_on_home_screen_button_mouse_exited"]
 [connection signal="pressed" from="endScreen/HomeScreenButton" to="." method="_on_home_button_pressed"]
-[connection signal="mouse_entered" from="endScreen/RestartButton" to="." method="_on_restart_button_mouse_entered"]
-[connection signal="mouse_exited" from="endScreen/RestartButton" to="." method="_on_restart_button_mouse_exited"]
 [connection signal="pressed" from="endScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="mouse_entered" from="beforeScreen/playButton" to="." method="_on_play_button_mouse_entered"]
-[connection signal="mouse_exited" from="beforeScreen/playButton" to="." method="_on_play_button_mouse_exited"]
 [connection signal="pressed" from="beforeScreen/playButton" to="." method="_on_play_button_pressed"]
-[connection signal="mouse_entered" from="beforeScreen/quitGameButton" to="." method="_on_quit_game_button_mouse_entered"]
-[connection signal="mouse_exited" from="beforeScreen/quitGameButton" to="." method="_on_quit_game_button_mouse_exited"]
 [connection signal="pressed" from="beforeScreen/quitGameButton" to="." method="_on_quit_game_button_pressed"]

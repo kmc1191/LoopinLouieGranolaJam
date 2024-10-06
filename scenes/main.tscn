@@ -286,11 +286,11 @@ volume_db = -5.0
 
 [connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
-[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]
-[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
