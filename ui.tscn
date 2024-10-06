@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1tvo8c6klabx"]
+[gd_scene load_steps=10 format=3 uid="uid://b1tvo8c6klabx"]
 
 [ext_resource type="Script" path="res://canvas_layer.gd" id="1_o71cd"]
 [ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="2_ec2ed"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5nbrd5dsw06t" path="res://assets/pngtree-yellow-play-start-button-for-video-game-with-white-playful-text-vector-png-image_10168531.png" id="5_ygsi0"]
 [ext_resource type="Texture2D" uid="uid://c0r3p2iardk1" path="res://assets/images.jpeg" id="6_qdr3k"]
 [ext_resource type="AudioStream" uid="uid://b16oij4uckeyd" path="res://assets/LoseSoundDistorted.mp3" id="7_juq5x"]
+[ext_resource type="Texture2D" uid="uid://cqtsvde61ffol" path="res://assets/Louie.png" id="8_eumqu"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_o71cd")
@@ -86,6 +87,11 @@ offset_bottom = 648.0
 position = Vector2(94.25, 94.75)
 scale = Vector2(0.833333, 0.802222)
 texture = ExtResource("6_qdr3k")
+
+[node name="Louie" type="Sprite2D" parent="beforeScreen"]
+position = Vector2(924, 148)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("8_eumqu")
 
 [node name="LoopingLoseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_juq5x")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=24 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://behsc7k8nf7gp" path="res://assets/Background.png" id="1_gl74u"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -17,10 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://kbtw3067pwma" path="res://assets/Untitled_Project_V1.mp3" id="15_i0v8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4i124"]
-size = Vector2(51.9999, 647.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_05tcc"]
-size = Vector2(1152, 64)
+size = Vector2(51.9999, 1902.44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hrul"]
 size = Vector2(1152, 56)
@@ -56,18 +53,17 @@ scale = Vector2(1.173, 0.672)
 texture = ExtResource("1_gl74u")
 
 [node name="mainGameScreen" type="Node2D" parent="."]
-visible = false
 
 [node name="WallLeft" type="Area2D" parent="mainGameScreen"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallLeft"]
-position = Vector2(-26, 324)
+position = Vector2(-26, 33.4375)
 shape = SubResource("RectangleShape2D_4i124")
 
 [node name="WallRight" type="Area2D" parent="mainGameScreen"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallRight"]
-position = Vector2(1184, 324)
+position = Vector2(1184, -12.7813)
 shape = SubResource("RectangleShape2D_4i124")
 
 [node name="Hud" type="CanvasLayer" parent="mainGameScreen"]
@@ -99,10 +95,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Borders" type="StaticBody2D" parent="mainGameScreen"]
 collision_layer = 2
-
-[node name="Top" type="CollisionShape2D" parent="mainGameScreen/Borders"]
-position = Vector2(576, -32)
-shape = SubResource("RectangleShape2D_05tcc")
 
 [node name="Bottom" type="CollisionShape2D" parent="mainGameScreen/Borders"]
 position = Vector2(576, 676)
@@ -290,11 +282,11 @@ volume_db = -5.0
 
 [connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
-[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]
-[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
