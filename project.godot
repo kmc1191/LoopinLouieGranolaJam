@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Loopin-Louie"
+config/description="Travel back to sitting at the table after dinner with your family, laughing hysterically at the feud that was your favorite board game: Loopin' Louie! This time, Louie's found his way into your old retro gaming console to cause more mischief as part of his devious scheme. Battle it out with your friend to see who can protect their chickens from Louie's horsing around!
+
+Credits: 
+Saige Bock
+Kaitlynn Clement
+Adrian Burgos
+
+(All code and assets created by Frapuccino Enjoyers!)"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/boxart.png"
+config/windows_native_icon="res://assets/favicon.ico"
 
 [display]
 
