@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=21 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -28,6 +28,9 @@ size = Vector2(141.5, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4tg8"]
 size = Vector2(142, 42.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obsrk"]
+size = Vector2(141.5, 22.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5r8ph"]
 size = Vector2(1141, 30)
@@ -144,26 +147,40 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(360, 524.625)
 shape = SubResource("RectangleShape2D_c4tg8")
 
+[node name="Area2D" type="Area2D" parent="mainGameScreen/HayBail2"]
+position = Vector2(359, 521)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail2/Area2D"]
+position = Vector2(0.25, 18.75)
+shape = SubResource("RectangleShape2D_obsrk")
+
 [node name="HayBail1" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(0, 2)
 script = ExtResource("5_ktddo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1"]
-position = Vector2(362, 525)
+position = Vector2(359, 523)
 shape = SubResource("RectangleShape2D_do6y7")
 
 [node name="ColorRect" type="ColorRect" parent="mainGameScreen/HayBail1"]
-offset_left = 289.0
-offset_top = 505.0
-offset_right = 431.0
-offset_bottom = 545.0
+offset_left = 288.0
+offset_top = 503.0
+offset_right = 430.0
+offset_bottom = 543.0
 metadata/_edit_use_anchors_ = true
 
 [node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/HayBailCollider"]
-position = Vector2(360, 524.625)
+position = Vector2(359, 521)
 shape = SubResource("RectangleShape2D_c4tg8")
+
+[node name="Area2D" type="Area2D" parent="mainGameScreen/HayBail1"]
+position = Vector2(359, 521)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/Area2D"]
+position = Vector2(0.25, 18.75)
+shape = SubResource("RectangleShape2D_obsrk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainGameScreen"]
 
@@ -227,8 +244,10 @@ texture = ExtResource("9_letmv")
 [connection signal="timeout" from="mainGameScreen/BallTimer" to="." method="_on_ball_timer_timeout"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop1" to="." method="_on_coop_1_child_entered_tree"]

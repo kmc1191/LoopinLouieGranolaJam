@@ -44,4 +44,7 @@ func _end_game(player_won : int):
 	$mainGameScreen/Hud.visible = false
 	$UI.on_game_over(player_won)
 	
-	
+
+func _on_Louie_hit_bottom(body: Node2D) -> void:
+	if(body.name == "Louie"):
+		$mainGameScreen/Louie.position.y-=100
