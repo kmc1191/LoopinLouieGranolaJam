@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
 [ext_resource type="PackedScene" uid="uid://b1tvo8c6klabx" path="res://ui.tscn" id="3_e105d"]
-[ext_resource type="Script" path="res://scenes/Ball.gd" id="4_18rf6"]
 [ext_resource type="Script" path="res://scenes/hay_bail_2.gd" id="5_faruf"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
 [ext_resource type="Script" path="res://scenes/louie.gd" id="6_ywhtm"]
@@ -14,9 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="9_wn6j5"]
 [ext_resource type="Texture2D" uid="uid://rmerivlot46b" path="res://assets/Chicken2.png" id="11_o4juc"]
 [ext_resource type="Texture2D" uid="uid://c8c1tun64ja52" path="res://assets/BlueSpringDown.png" id="12_o8mfc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_croqj"]
-size = Vector2(10, 10)
+[ext_resource type="AudioStream" uid="uid://c36nyp8lej1fs" path="res://assets/chicken-bawk-epic-stock-media-1-00-00.mp3" id="15_3vryi"]
+[ext_resource type="AudioStream" uid="uid://kbtw3067pwma" path="res://assets/Untitled_Project_V1.mp3" id="15_i0v8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4i124"]
 size = Vector2(51.9999, 647.75)
@@ -55,29 +53,6 @@ script = ExtResource("2_2vu7i")
 [node name="mainGameScreen" type="Node2D" parent="."]
 visible = false
 
-[node name="Ball" type="CharacterBody2D" parent="mainGameScreen"]
-position = Vector2(576, 324)
-collision_mask = 3
-script = ExtResource("4_18rf6")
-
-[node name="ColorRect" type="ColorRect" parent="mainGameScreen/Ball"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 395.0
-offset_top = 348.0
-offset_right = 405.0
-offset_bottom = 358.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Ball"]
-position = Vector2(375, 339)
-shape = SubResource("RectangleShape2D_croqj")
-
 [node name="WallLeft" type="Area2D" parent="mainGameScreen"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallLeft"]
@@ -105,7 +80,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CPUScore" type="Label" parent="mainGameScreen/Hud"]
+[node name="Player2Score" type="Label" parent="mainGameScreen/Hud"]
 offset_left = 715.0
 offset_top = 202.0
 offset_right = 765.0
@@ -127,10 +102,6 @@ shape = SubResource("RectangleShape2D_05tcc")
 [node name="Bottom" type="CollisionShape2D" parent="mainGameScreen/Borders"]
 position = Vector2(576, 676)
 shape = SubResource("RectangleShape2D_1hrul")
-
-[node name="BallTimer" type="Timer" parent="mainGameScreen"]
-one_shot = true
-autostart = true
 
 [node name="HayBail2" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(431, 2)
@@ -184,16 +155,16 @@ position = Vector2(356, 527)
 scale = Vector2(0.88, 0.88)
 texture = ExtResource("7_j3wml")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="mainGameScreen"]
+[node name="FloorBody" type="StaticBody2D" parent="mainGameScreen"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/StaticBody2D"]
+[node name="FloorCollisionShape" type="CollisionShape2D" parent="mainGameScreen/FloorBody"]
 position = Vector2(575, 563)
 shape = SubResource("RectangleShape2D_5r8ph")
 
 [node name="Louie" type="CharacterBody2D" parent="mainGameScreen"]
 script = ExtResource("6_ywhtm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Louie"]
+[node name="LouieCollisionShape" type="CollisionShape2D" parent="mainGameScreen/Louie"]
 position = Vector2(577, 179)
 shape = SubResource("RectangleShape2D_l377s")
 
@@ -207,11 +178,11 @@ position = Vector2(949, 407)
 [node name="Coop2Area" type="Area2D" parent="mainGameScreen/Coop2"]
 position = Vector2(9, 17)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop2/Coop2Area"]
+[node name="Coop2CollisionShape" type="CollisionShape2D" parent="mainGameScreen/Coop2/Coop2Area"]
 position = Vector2(38, 103)
 shape = SubResource("RectangleShape2D_fvqhn")
 
-[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/CollisionShape2D"]
+[node name="Barn2" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/Coop2CollisionShape"]
 position = Vector2(4.51715, -28.5)
 scale = Vector2(0.187835, 0.201772)
 texture = ExtResource("9_wn6j5")
@@ -237,18 +208,14 @@ position = Vector2(83, 401)
 [node name="Coop1Area" type="Area2D" parent="mainGameScreen/Coop1"]
 position = Vector2(0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
+[node name="Coop1CollisionShape" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
 position = Vector2(56, 118)
 shape = SubResource("RectangleShape2D_fvqhn")
 
-[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/CollisionShape2D"]
+[node name="Barn1" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/Coop1CollisionShape"]
 position = Vector2(2.94037, -24.0625)
 scale = Vector2(0.186804, 0.200664)
 texture = ExtResource("9_wn6j5")
-
-[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1"]
-position = Vector2(61, -2.99998)
-scale = Vector2(0.102, 0.102)
 
 [node name="Chicken3" type="Sprite2D" parent="mainGameScreen/Coop1"]
 position = Vector2(71, 3)
@@ -279,9 +246,17 @@ texture = ExtResource("12_o8mfc")
 
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_i0v8j")
+volume_db = -7.598
+parameters/looping = true
+
+[node name="SquawkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_3vryi")
+volume_db = -5.0
+
 [connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
-[connection signal="timeout" from="mainGameScreen/BallTimer" to="." method="_on_ball_timer_timeout"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]

@@ -2,10 +2,7 @@ extends CharacterBody2D
 
 @onready var child_sprite = $LouieSprite
 var win_size : Vector2
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 var direction : int = 1
-
 var gameStarted = false
 
 func _ready():
@@ -13,14 +10,9 @@ func _ready():
 	child_sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#if not is_on_floor():
 	if(gameStarted):
 		velocity += get_gravity()*0.05 * delta
 		velocity.x = 220 * direction
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
 
 	move_and_slide()
 	
