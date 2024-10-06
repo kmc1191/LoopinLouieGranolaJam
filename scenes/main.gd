@@ -1,15 +1,10 @@
 extends Sprite2D
 
 var gameStarted = false
-
 var score := [1, 1]# 0:Player, 1: Player 2
-const PADDLE_SPEED : int = 500
 
 @onready var endGameScreen = $endScreen
 @onready var ui = $UI
-
-#func _on_ball_timer_timeout():
-	#$Ball.new_ball()
 
 func _ready():
 	ui.game_started.connect(game_started)
@@ -39,9 +34,6 @@ func game_restarted():
 	$mainGameScreen/HayBail2.gameStarted = true
 
 func _on_wall_left_hit(body):
-	#score[1] += 1
-	#$Hud/CPUScore.text = str(score[1])
-	#$BallTimer.start()
 	$mainGameScreen/Louie.turn_around()
 	$mainGameScreen/Louie.jump()
 
