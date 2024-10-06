@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=23 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/hay_bail_2.gd" id="5_faruf"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
 [ext_resource type="Script" path="res://scenes/louie.gd" id="6_ywhtm"]
+[ext_resource type="Texture2D" uid="uid://qdh3yjh8ne88" path="res://assets/SpringDown.png" id="7_fc00b"]
 [ext_resource type="Texture2D" uid="uid://4rvgy75v4a7e" path="res://assets/HaybaleStationary.png" id="7_j3wml"]
 [ext_resource type="Texture2D" uid="uid://cqtsvde61ffol" path="res://assets/Louie.png" id="7_s1a3i"]
 [ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="9_wn6j5"]
@@ -233,6 +234,12 @@ shape = SubResource("RectangleShape2D_fvqhn")
 position = Vector2(2.5, 0.25)
 scale = Vector2(0.131026, 0.140748)
 texture = ExtResource("9_wn6j5")
+
+[node name="Spring" type="Sprite2D" parent="mainGameScreen"]
+show_behind_parent = true
+position = Vector2(356, 536)
+scale = Vector2(0.585, 0.585)
+texture = ExtResource("7_fc00b")
 
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 
