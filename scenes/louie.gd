@@ -30,4 +30,4 @@ func turn_around():
 	direction *= -1
 	
 func jump():
-	velocity.y = -110
+	velocity.y = -90
