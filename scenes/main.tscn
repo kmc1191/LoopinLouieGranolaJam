@@ -1,15 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=22 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="2_4g85s"]
-[ext_resource type="PackedScene" uid="uid://b1tvo8c6klabx" path="res://ui.tscn" id="3_e105d"]
+[ext_resource type="PackedScene" uid="uid://co0wcm23hqslx" path="res://ui.tscn" id="3_e105d"]
 [ext_resource type="Script" path="res://scenes/Ball.gd" id="4_18rf6"]
 [ext_resource type="Script" path="res://scenes/hay_bail_2.gd" id="5_faruf"]
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="5_ktddo"]
 [ext_resource type="Script" path="res://scenes/louie.gd" id="6_ywhtm"]
+[ext_resource type="Texture2D" uid="uid://4rvgy75v4a7e" path="res://assets/HaybaleStationary.png" id="7_j3wml"]
 [ext_resource type="Texture2D" uid="uid://cqtsvde61ffol" path="res://assets/Louie.png" id="7_s1a3i"]
-[ext_resource type="Texture2D" uid="uid://c10l5u4bxpe5h" path="res://icon.svg" id="9_letmv"]
+[ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="9_wn6j5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_croqj"]
 size = Vector2(10, 10)
@@ -24,13 +25,13 @@ size = Vector2(1152, 64)
 size = Vector2(1152, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_do6y7"]
-size = Vector2(141.5, 40.5)
+size = Vector2(84, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4tg8"]
-size = Vector2(142, 42.75)
+size = Vector2(84, 42.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obsrk"]
-size = Vector2(141.5, 22.5)
+size = Vector2(83, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5r8ph"]
 size = Vector2(1141, 30)
@@ -39,7 +40,7 @@ size = Vector2(1141, 30)
 size = Vector2(103, 61.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvqhn"]
-size = Vector2(94, 145)
+size = Vector2(121, 135.5)
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
@@ -134,13 +135,6 @@ script = ExtResource("5_faruf")
 position = Vector2(362, 525)
 shape = SubResource("RectangleShape2D_do6y7")
 
-[node name="ColorRect" type="ColorRect" parent="mainGameScreen/HayBail2"]
-offset_left = 289.0
-offset_top = 505.0
-offset_right = 431.0
-offset_bottom = 545.0
-metadata/_edit_use_anchors_ = true
-
 [node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail2/HayBailCollider"]
@@ -154,33 +148,36 @@ position = Vector2(359, 521)
 position = Vector2(0.25, 18.75)
 shape = SubResource("RectangleShape2D_obsrk")
 
+[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/HayBail2"]
+position = Vector2(359, 528)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("7_j3wml")
+
 [node name="HayBail1" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(0, 2)
 script = ExtResource("5_ktddo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1"]
-position = Vector2(359, 523)
+position = Vector2(356, 523)
 shape = SubResource("RectangleShape2D_do6y7")
-
-[node name="ColorRect" type="ColorRect" parent="mainGameScreen/HayBail1"]
-offset_left = 288.0
-offset_top = 503.0
-offset_right = 430.0
-offset_bottom = 543.0
-metadata/_edit_use_anchors_ = true
 
 [node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/HayBailCollider"]
-position = Vector2(359, 521)
+position = Vector2(356, 521)
 shape = SubResource("RectangleShape2D_c4tg8")
 
 [node name="Area2D" type="Area2D" parent="mainGameScreen/HayBail1"]
 position = Vector2(359, 521)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/Area2D"]
-position = Vector2(0.25, 18.75)
+position = Vector2(-2.5, 18.5)
 shape = SubResource("RectangleShape2D_obsrk")
+
+[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/HayBail1"]
+position = Vector2(356, 527)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("7_j3wml")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainGameScreen"]
 
@@ -208,7 +205,7 @@ position = Vector2(576, 178)
 texture = ExtResource("7_s1a3i")
 
 [node name="Coop2" type="CharacterBody2D" parent="mainGameScreen"]
-position = Vector2(979, 402)
+position = Vector2(949, 407)
 
 [node name="Coop2Area" type="Area2D" parent="mainGameScreen/Coop2"]
 position = Vector2(9, 17)
@@ -218,9 +215,9 @@ position = Vector2(38, 55)
 shape = SubResource("RectangleShape2D_fvqhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/CollisionShape2D"]
-position = Vector2(1, 1.90735e-06)
-scale = Vector2(0.734375, 1.12891)
-texture = ExtResource("9_letmv")
+position = Vector2(2.5, 0.25)
+scale = Vector2(0.131026, 0.140748)
+texture = ExtResource("9_wn6j5")
 
 [node name="Coop1" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(83, 401)
@@ -229,24 +226,24 @@ position = Vector2(83, 401)
 position = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
-position = Vector2(46, 71)
+position = Vector2(79, 77)
 shape = SubResource("RectangleShape2D_fvqhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/CollisionShape2D"]
-position = Vector2(-1, 1)
-scale = Vector2(0.734375, 1.12891)
-texture = ExtResource("9_letmv")
+position = Vector2(2.5, 0.25)
+scale = Vector2(0.131026, 0.140748)
+texture = ExtResource("9_wn6j5")
 
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 
 [connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
 [connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
 [connection signal="timeout" from="mainGameScreen/BallTimer" to="." method="_on_ball_timer_timeout"]
-[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail2/Area2D" to="." method="_on_Louie_hit_bottom"]
-[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="mainGameScreen/HayBail1/Area2D" to="." method="_on_Louie_hit_bottom"]
 [connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
