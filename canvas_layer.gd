@@ -15,7 +15,7 @@ func on_game_over(player_won : int):
 	playerWon = player_won
 	endGameScreen.visible = true
 	$LoopingLoseSound.play()
-	$endScreen/EndGameScoreDisplay/PlayerWonDisplay.text = "Player %d lost!\nLoop again later!" % playerWon
+	$endScreen/EndGameScoreDisplay/PlayerWonDisplay.text = "PLAYER %d LOST!\nLOOP AGAIN LATER!" % playerWon
 
 
 func _on_home_button_pressed() -> void:
