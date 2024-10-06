@@ -19,3 +19,10 @@ func _on_score_right_body_entered(body):
 	#$BallTimer.start()
 	$Louie.turn_around()
 	$Louie.jump()
+
+
+func _on_hay_bail_collider_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.name == "Louie":
+		$Louie.jump()
+		print("hay bail")
