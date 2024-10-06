@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=30 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://behsc7k8nf7gp" path="res://assets/Background.png" id="1_gl74u"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://loxq1rt5cxq" path="res://assets/Barn.png" id="9_wn6j5"]
 [ext_resource type="Texture2D" uid="uid://rmerivlot46b" path="res://assets/Chicken2.png" id="11_o4juc"]
 [ext_resource type="Texture2D" uid="uid://c8c1tun64ja52" path="res://assets/BlueSpringDown.png" id="12_o8mfc"]
+[ext_resource type="Texture2D" uid="uid://cgt5v0uyde82" path="res://assets/Instructions.png" id="13_04rbs"]
 [ext_resource type="AudioStream" uid="uid://c36nyp8lej1fs" path="res://assets/chicken-bawk-epic-stock-media-1-00-00.mp3" id="15_3vryi"]
 [ext_resource type="AudioStream" uid="uid://kbtw3067pwma" path="res://assets/Untitled_Project_V1.mp3" id="15_i0v8j"]
 
@@ -39,6 +40,76 @@ size = Vector2(103, 61.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crqja"]
 size = Vector2(1152, 53.25)
+
+[sub_resource type="Animation" id="Animation_qeieu"]
+resource_name = "Transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xjttw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vc6v0"]
+resource_name = "FadeInstructions"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2hgp3"]
+resource_name = "TransitionNew"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lklew"]
+_data = {
+"FadeInstructions": SubResource("Animation_vc6v0"),
+"RESET": SubResource("Animation_xjttw"),
+"Transition": SubResource("Animation_qeieu"),
+"TransitionNew": SubResource("Animation_2hgp3")
+}
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
@@ -68,33 +139,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallRight"]
 position = Vector2(1184, -12.7813)
 shape = SubResource("RectangleShape2D_4i124")
-
-[node name="Hud" type="CanvasLayer" parent="mainGameScreen"]
-visible = false
-
-[node name="PlayerScore" type="Label" parent="mainGameScreen/Hud"]
-offset_left = 450.0
-offset_top = 202.0
-offset_right = 500.0
-offset_bottom = 255.0
-theme_override_fonts/font = ExtResource("2_4g85s")
-theme_override_font_sizes/font_size = 50
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Player2Score" type="Label" parent="mainGameScreen/Hud"]
-offset_left = 715.0
-offset_top = 202.0
-offset_right = 765.0
-offset_bottom = 255.0
-theme_override_fonts/font = ExtResource("2_4g85s")
-theme_override_font_sizes/font_size = 50
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Borders" type="StaticBody2D" parent="mainGameScreen"]
 collision_layer = 2
@@ -272,6 +316,17 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Area2D"]
 position = Vector2(578, 553.625)
 shape = SubResource("RectangleShape2D_crqja")
+
+[node name="InstructionText" type="Sprite2D" parent="mainGameScreen"]
+position = Vector2(582, 236)
+scale = Vector2(1.016, 1.024)
+texture = ExtResource("13_04rbs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mainGameScreen/InstructionText"]
+libraries = {
+"": SubResource("AnimationLibrary_lklew")
+}
+speed_scale = 1.381
 
 [node name="UI" parent="." instance=ExtResource("3_e105d")]
 

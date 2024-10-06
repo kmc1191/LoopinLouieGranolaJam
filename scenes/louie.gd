@@ -4,6 +4,7 @@ extends CharacterBody2D
 var win_size : Vector2
 var direction : int = 1
 var gameStarted = false
+var moveStart = false
 
 func _ready():
 	win_size = get_viewport_rect().size

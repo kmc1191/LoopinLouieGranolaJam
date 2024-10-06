@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cj36c313nfyk8" path="res://assets/Banner.png" id="3_tj5qt"]
 [ext_resource type="FontFile" uid="uid://cwd1tkm36irny" path="res://assets/pixel_font.ttf" id="5_1glo8"]
 [ext_resource type="Texture2D" uid="uid://dlklrxnctn0fx" path="res://assets/Exit.png" id="6_4yar2"]
+[ext_resource type="Texture2D" uid="uid://bagnc3sg7kppn" path="res://assets/TitleScreen.png" id="6_8bjin"]
 [ext_resource type="Texture2D" uid="uid://c6qcntmekwba4" path="res://assets/PlayButton.png" id="6_xhuva"]
 [ext_resource type="AudioStream" uid="uid://b16oij4uckeyd" path="res://assets/LoseSoundDistorted.mp3" id="7_juq5x"]
-[ext_resource type="Texture2D" uid="uid://cqtsvde61ffol" path="res://assets/Louie.png" id="8_eumqu"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_o71cd")
@@ -61,33 +61,34 @@ texture = ExtResource("3_knoqs")
 
 [node name="beforeScreen" type="Node2D" parent="."]
 
+[node name="TitleScreen" type="Sprite2D" parent="beforeScreen"]
+position = Vector2(575, 307)
+scale = Vector2(1.1555, 0.93325)
+texture = ExtResource("6_8bjin")
+
 [node name="playButton" type="Button" parent="beforeScreen"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 448.0
-offset_top = 223.0
-offset_right = 760.0
-offset_bottom = 440.0
+offset_left = 496.0
+offset_top = 382.0
+offset_right = 667.0
+offset_bottom = 487.0
 
 [node name="Sprite2D" type="Sprite2D" parent="beforeScreen/playButton"]
-position = Vector2(157, 112)
+position = Vector2(83, 49)
+scale = Vector2(0.545, 0.63)
 texture = ExtResource("6_xhuva")
 
 [node name="quitGameButton" type="Button" parent="beforeScreen"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 890.0
-offset_top = 503.0
-offset_right = 1148.0
-offset_bottom = 648.0
+offset_left = 496.0
+offset_top = 519.0
+offset_right = 669.0
+offset_bottom = 621.0
 
 [node name="Sprite2D" type="Sprite2D" parent="beforeScreen/quitGameButton"]
-position = Vector2(128, 68)
-scale = Vector2(0.725625, 0.695)
+position = Vector2(84, 50)
+scale = Vector2(0.575313, 0.6325)
 texture = ExtResource("6_4yar2")
-
-[node name="Louie" type="Sprite2D" parent="beforeScreen"]
-position = Vector2(924, 148)
-scale = Vector2(1.76, 1.76)
-texture = ExtResource("8_eumqu")
 
 [node name="LoopingLoseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_juq5x")
