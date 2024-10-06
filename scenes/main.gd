@@ -94,14 +94,14 @@ func _on_coop_1_area_body_entered(body: Node2D) -> void:
 		# Make chickens poof
 		if score[0] == 2:
 			chicken_1_green.texture = poof_texture
+			$SquawkSound.play()
 			await get_tree().create_timer(0.75).timeout
 			chicken_1_green.visible = false
-			$SquawkSound.play()
 		elif score[0] == 1:
 			chicken_2_green.texture = poof_texture
+			$SquawkSound.play()
 			await get_tree().create_timer(0.75).timeout
 			chicken_2_green.visible = false
-			$SquawkSound.play()
 		else:
 			$SquawkSound.play()
 
