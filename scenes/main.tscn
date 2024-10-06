@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwgtrk8je4es6"]
+[gd_scene load_steps=20 format=3 uid="uid://bwgtrk8je4es6"]
 
 [ext_resource type="Texture2D" uid="uid://pucgh0qbmij" path="res://assets/Bg.png" id="1_nmwho"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_2vu7i"]
@@ -14,14 +14,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_croqj"]
 size = Vector2(10, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i124"]
+size = Vector2(51.9999, 647.75)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05tcc"]
 size = Vector2(1152, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hrul"]
 size = Vector2(1152, 56)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i124"]
-size = Vector2(51.9999, 647.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_do6y7"]
 size = Vector2(141.5, 40.5)
@@ -45,14 +45,14 @@ texture = ExtResource("1_nmwho")
 centered = false
 script = ExtResource("2_2vu7i")
 
-[node name="UI" parent="." instance=ExtResource("3_e105d")]
+[node name="mainGameScreen" type="Node2D" parent="."]
 
-[node name="Ball" type="CharacterBody2D" parent="."]
+[node name="Ball" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(576, 324)
 collision_mask = 3
 script = ExtResource("4_18rf6")
 
-[node name="ColorRect" type="ColorRect" parent="Ball"]
+[node name="ColorRect" type="ColorRect" parent="mainGameScreen/Ball"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -66,36 +66,25 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Ball"]
 position = Vector2(375, 339)
 shape = SubResource("RectangleShape2D_croqj")
 
-[node name="Borders" type="StaticBody2D" parent="."]
-collision_layer = 2
+[node name="WallLeft" type="Area2D" parent="mainGameScreen"]
 
-[node name="Top" type="CollisionShape2D" parent="Borders"]
-position = Vector2(576, -32)
-shape = SubResource("RectangleShape2D_05tcc")
-
-[node name="Bottom" type="CollisionShape2D" parent="Borders"]
-position = Vector2(576, 676)
-shape = SubResource("RectangleShape2D_1hrul")
-
-[node name="WallLeft" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallLeft"]
 position = Vector2(-26, 324)
 shape = SubResource("RectangleShape2D_4i124")
 
-[node name="WallRight" type="Area2D" parent="."]
+[node name="WallRight" type="Area2D" parent="mainGameScreen"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallRight"]
 position = Vector2(1184, 324)
 shape = SubResource("RectangleShape2D_4i124")
 
-[node name="Hud" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="mainGameScreen"]
 
-[node name="PlayerScore" type="Label" parent="Hud"]
+[node name="PlayerScore" type="Label" parent="mainGameScreen/Hud"]
 offset_left = 450.0
 offset_top = 202.0
 offset_right = 500.0
@@ -107,7 +96,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CPUScore" type="Label" parent="Hud"]
+[node name="CPUScore" type="Label" parent="mainGameScreen/Hud"]
 offset_left = 715.0
 offset_top = 202.0
 offset_right = 765.0
@@ -119,66 +108,77 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BallTimer" type="Timer" parent="."]
+[node name="Borders" type="StaticBody2D" parent="mainGameScreen"]
+collision_layer = 2
+
+[node name="Top" type="CollisionShape2D" parent="mainGameScreen/Borders"]
+position = Vector2(576, -32)
+shape = SubResource("RectangleShape2D_05tcc")
+
+[node name="Bottom" type="CollisionShape2D" parent="mainGameScreen/Borders"]
+position = Vector2(576, 676)
+shape = SubResource("RectangleShape2D_1hrul")
+
+[node name="BallTimer" type="Timer" parent="mainGameScreen"]
 one_shot = true
 autostart = true
 
-[node name="HayBail2" type="CharacterBody2D" parent="."]
+[node name="HayBail2" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(431, 2)
 script = ExtResource("5_faruf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HayBail2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail2"]
 position = Vector2(362, 525)
 shape = SubResource("RectangleShape2D_do6y7")
 
-[node name="ColorRect" type="ColorRect" parent="HayBail2"]
+[node name="ColorRect" type="ColorRect" parent="mainGameScreen/HayBail2"]
 offset_left = 289.0
 offset_top = 505.0
 offset_right = 431.0
 offset_bottom = 545.0
 metadata/_edit_use_anchors_ = true
 
-[node name="HayBailCollider" type="Area2D" parent="HayBail2"]
+[node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HayBail2/HayBailCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail2/HayBailCollider"]
 position = Vector2(360, 524.625)
 shape = SubResource("RectangleShape2D_c4tg8")
 
-[node name="HayBail1" type="CharacterBody2D" parent="."]
+[node name="HayBail1" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(0, 2)
 script = ExtResource("5_ktddo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HayBail1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1"]
 position = Vector2(362, 525)
 shape = SubResource("RectangleShape2D_do6y7")
 
-[node name="ColorRect" type="ColorRect" parent="HayBail1"]
+[node name="ColorRect" type="ColorRect" parent="mainGameScreen/HayBail1"]
 offset_left = 289.0
 offset_top = 505.0
 offset_right = 431.0
 offset_bottom = 545.0
 metadata/_edit_use_anchors_ = true
 
-[node name="HayBailCollider" type="Area2D" parent="HayBail1"]
+[node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HayBail1/HayBailCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/HayBailCollider"]
 position = Vector2(360, 524.625)
 shape = SubResource("RectangleShape2D_c4tg8")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="mainGameScreen"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/StaticBody2D"]
 position = Vector2(575, 563)
 shape = SubResource("RectangleShape2D_5r8ph")
 
-[node name="Louie" type="CharacterBody2D" parent="."]
+[node name="Louie" type="CharacterBody2D" parent="mainGameScreen"]
 script = ExtResource("6_ywhtm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Louie"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Louie"]
 position = Vector2(577, 179)
 shape = SubResource("RectangleShape2D_l377s")
 
-[node name="ColorRect" type="ColorRect" parent="Louie"]
+[node name="ColorRect" type="ColorRect" parent="mainGameScreen/Louie"]
 visible = false
 offset_left = 558.0
 offset_top = 171.0
@@ -186,47 +186,49 @@ offset_right = 596.0
 offset_bottom = 208.0
 metadata/_edit_use_anchors_ = true
 
-[node name="LouieSprite" type="Sprite2D" parent="Louie"]
+[node name="LouieSprite" type="Sprite2D" parent="mainGameScreen/Louie"]
 position = Vector2(576, 178)
 texture = ExtResource("7_s1a3i")
 
-[node name="Coop2" type="CharacterBody2D" parent="."]
+[node name="Coop2" type="CharacterBody2D" parent="mainGameScreen"]
 
-[node name="Coop2Area" type="Area2D" parent="Coop2"]
+[node name="Coop2Area" type="Area2D" parent="mainGameScreen/Coop2"]
 position = Vector2(958, 330)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coop2/Coop2Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop2/Coop2Area"]
 position = Vector2(34, 145.5)
 shape = SubResource("RectangleShape2D_fvqhn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Coop2/Coop2Area/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/CollisionShape2D"]
 position = Vector2(4.76837e-06, -0.25)
 scale = Vector2(0.734375, 1.12891)
 texture = ExtResource("9_letmv")
 
-[node name="Coop1" type="CharacterBody2D" parent="."]
+[node name="Coop1" type="CharacterBody2D" parent="mainGameScreen"]
 
-[node name="Coop1Area" type="Area2D" parent="Coop1"]
+[node name="Coop1Area" type="Area2D" parent="mainGameScreen/Coop1"]
 position = Vector2(124, 330)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coop1/Coop1Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
 position = Vector2(34, 145.5)
 shape = SubResource("RectangleShape2D_fvqhn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Coop1/Coop1Area/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/CollisionShape2D"]
 position = Vector2(4.76837e-06, -0.25)
 scale = Vector2(0.734375, 1.12891)
 texture = ExtResource("9_letmv")
 
-[connection signal="body_entered" from="WallLeft" to="." method="_on_wall_left_hit"]
-[connection signal="body_entered" from="WallRight" to="." method="_on_wall_right_hit"]
-[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
-[connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
-[connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
-[connection signal="child_entered_tree" from="Coop2" to="." method="_on_coop_1_child_entered_tree"]
-[connection signal="body_entered" from="Coop2/Coop2Area" to="." method="_on_coop_1_area_body_entered"]
-[connection signal="body_entered" from="Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
-[connection signal="child_entered_tree" from="Coop1" to="." method="_on_coop_1_child_entered_tree"]
-[connection signal="body_entered" from="Coop1/Coop1Area" to="." method="_on_coop_1_area_body_entered"]
-[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[node name="UI" parent="." instance=ExtResource("3_e105d")]
+
+[connection signal="body_entered" from="mainGameScreen/WallLeft" to="." method="_on_wall_left_hit"]
+[connection signal="body_entered" from="mainGameScreen/WallRight" to="." method="_on_wall_right_hit"]
+[connection signal="timeout" from="mainGameScreen/BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail2/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
+[connection signal="child_entered_tree" from="mainGameScreen/Coop2" to="." method="_on_coop_1_child_entered_tree"]
+[connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_1_area_body_entered"]
+[connection signal="body_entered" from="mainGameScreen/Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
+[connection signal="child_entered_tree" from="mainGameScreen/Coop1" to="." method="_on_coop_1_child_entered_tree"]
+[connection signal="body_entered" from="mainGameScreen/Coop1/Coop1Area" to="." method="_on_coop_1_area_body_entered"]

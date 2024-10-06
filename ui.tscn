@@ -10,17 +10,17 @@ script = ExtResource("1_o71cd")
 [node name="endScreen" type="Node2D" parent="."]
 visible = false
 
-[node name="RestartButton" type="Button" parent="endScreen"]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 490.0
-offset_top = 438.0
-offset_right = 666.0
-offset_bottom = 607.0
-
-[node name="Sprite2D" type="Sprite2D" parent="endScreen/RestartButton"]
-position = Vector2(297, 63)
+[node name="Sprite2D" type="Sprite2D" parent="endScreen"]
+position = Vector2(937, 368)
 scale = Vector2(0.465, 0.488889)
 texture = ExtResource("2_5s5t0")
+
+[node name="RestartButton" type="Button" parent="endScreen"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 848.0
+offset_top = 280.0
+offset_right = 1024.0
+offset_bottom = 449.0
 
 [node name="EndGameScoreDisplay" type="Node2D" parent="endScreen"]
 
