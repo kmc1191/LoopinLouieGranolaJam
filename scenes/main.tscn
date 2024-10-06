@@ -216,6 +216,21 @@ position = Vector2(4.51715, -28.5)
 scale = Vector2(0.187835, 0.201772)
 texture = ExtResource("9_wn6j5")
 
+[node name="Chicken3" type="Sprite2D" parent="mainGameScreen/Coop2"]
+position = Vector2(68, 3)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
+[node name="Chicken2" type="Sprite2D" parent="mainGameScreen/Coop2"]
+position = Vector2(48, 18)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
+[node name="Chicken1" type="Sprite2D" parent="mainGameScreen/Coop2"]
+position = Vector2(30, 38)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("11_o4juc")
+
 [node name="Coop1" type="CharacterBody2D" parent="mainGameScreen"]
 position = Vector2(83, 401)
 
