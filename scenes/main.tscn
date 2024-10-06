@@ -42,7 +42,7 @@ size = Vector2(1141, 30)
 size = Vector2(103, 61.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvqhn"]
-size = Vector2(121, 135.5)
+size = Vector2(174, 242)
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
@@ -194,14 +194,6 @@ script = ExtResource("6_ywhtm")
 position = Vector2(577, 179)
 shape = SubResource("RectangleShape2D_l377s")
 
-[node name="ColorRect" type="ColorRect" parent="mainGameScreen/Louie"]
-visible = false
-offset_left = 558.0
-offset_top = 171.0
-offset_right = 596.0
-offset_bottom = 208.0
-metadata/_edit_use_anchors_ = true
-
 [node name="LouieSprite" type="Sprite2D" parent="mainGameScreen/Louie"]
 position = Vector2(576, 178)
 texture = ExtResource("7_s1a3i")
@@ -213,12 +205,12 @@ position = Vector2(949, 407)
 position = Vector2(9, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop2/Coop2Area"]
-position = Vector2(38, 55)
+position = Vector2(38, 103)
 shape = SubResource("RectangleShape2D_fvqhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop2/Coop2Area/CollisionShape2D"]
-position = Vector2(2.5, 0.25)
-scale = Vector2(0.131026, 0.140748)
+position = Vector2(4.51715, -28.5)
+scale = Vector2(0.187835, 0.201772)
 texture = ExtResource("9_wn6j5")
 
 [node name="Coop1" type="CharacterBody2D" parent="mainGameScreen"]
@@ -228,12 +220,12 @@ position = Vector2(83, 401)
 position = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Coop1/Coop1Area"]
-position = Vector2(79, 77)
+position = Vector2(56, 118)
 shape = SubResource("RectangleShape2D_fvqhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/Coop1/Coop1Area/CollisionShape2D"]
-position = Vector2(2.5, 0.25)
-scale = Vector2(0.131026, 0.140748)
+position = Vector2(2.94037, -24.0625)
+scale = Vector2(0.186804, 0.200664)
 texture = ExtResource("9_wn6j5")
 
 [node name="Spring" type="Sprite2D" parent="mainGameScreen"]

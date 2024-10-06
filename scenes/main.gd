@@ -24,20 +24,22 @@ func _on_wall_right_hit(body: Node2D) -> void:
 	$mainGameScreen/Louie.jump()	
 
 func _on_coop_1_area_body_entered(body: Node2D) -> void:
-	score[0] -= 1
-	print("hit coop 1")
-	$mainGameScreen/Hud/PlayerScore.text = str(score[0])
-	if(score[0] == 0):
-		_end_game(2)
-	$mainGameScreen/Louie.jump()
+	if body.name == "Louie":
+		score[0] -= 1
+		print("hit coop 1")
+		$mainGameScreen/Hud/PlayerScore.text = str(score[0])
+		if(score[0] == 0):
+			_end_game(2)
+		$mainGameScreen/Louie.jump()
 
 func _on_coop_2_area_body_entered(body: Node2D) -> void:
-	print("hit coop 2")
-	score[1] -= 1
-	$mainGameScreen/Hud/CPUScore.text = str(score[1])
-	if(score[1] == 0):
-		_end_game(1)
-	$mainGameScreen/Louie.jump()
+	if body.name == "Louie":
+		print("hit coop 2")
+		score[1] -= 1
+		$mainGameScreen/Hud/CPUScore.text = str(score[1])
+		if(score[1] == 0):
+			_end_game(1)
+		$mainGameScreen/Louie.jump()
 	
 func _end_game(player_won : int):
 	$mainGameScreen.visible = false
