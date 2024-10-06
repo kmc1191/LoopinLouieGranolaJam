@@ -17,15 +17,23 @@ func _on_wall_left_hit(body):
 	_end_game()
 
 func _on_hay_bail_collider_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if body.name == "Louie":
 		$Louie.jump()
-		print("hay bail")
 
 
 
 func _on_wall_right_hit(body: Node2D) -> void:
 	$Louie.turn_around()
+	$Louie.jump()	
+
+
+func _on_coop_1_area_body_entered(body: Node2D) -> void:
+	score[1] += 1
+	$Louie.jump()
+
+
+func _on_coop_2_area_body_entered(body: Node2D) -> void:
+	score[0] += 1
 	$Louie.jump()
 	
 func _end_game():
