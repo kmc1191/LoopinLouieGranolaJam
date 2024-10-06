@@ -25,6 +25,10 @@ func _on_wall_right_hit(body: Node2D) -> void:
 
 
 func _on_coop_1_area_body_entered(body: Node2D) -> void:
-	print("coop hit")
 	score[1] += 1
+	$Louie.jump()
+
+
+func _on_coop_2_area_body_entered(body: Node2D) -> void:
+	score[0] += 1
 	$Louie.jump()

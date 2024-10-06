@@ -187,6 +187,20 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(576, 178)
 texture = ExtResource("7_s1a3i")
 
+[node name="Coop2" type="CharacterBody2D" parent="."]
+
+[node name="Coop2Area" type="Area2D" parent="Coop2"]
+position = Vector2(958, 330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coop2/Coop2Area"]
+position = Vector2(34, 145.5)
+shape = SubResource("RectangleShape2D_fvqhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coop2/Coop2Area/CollisionShape2D"]
+position = Vector2(4.76837e-06, -0.25)
+scale = Vector2(0.734375, 1.12891)
+texture = ExtResource("9_letmv")
+
 [node name="Coop1" type="CharacterBody2D" parent="."]
 
 [node name="Coop1Area" type="Area2D" parent="Coop1"]
@@ -208,5 +222,8 @@ texture = ExtResource("9_letmv")
 [connection signal="body_entered" from="HayBail2/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
 [connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="child_entered_tree" from="Coop2" to="." method="_on_coop_1_child_entered_tree"]
+[connection signal="body_entered" from="Coop2/Coop2Area" to="." method="_on_coop_1_area_body_entered"]
+[connection signal="body_entered" from="Coop2/Coop2Area" to="." method="_on_coop_2_area_body_entered"]
 [connection signal="child_entered_tree" from="Coop1" to="." method="_on_coop_1_child_entered_tree"]
 [connection signal="body_entered" from="Coop1/Coop1Area" to="." method="_on_coop_1_area_body_entered"]
