@@ -73,15 +73,15 @@ shape = SubResource("RectangleShape2D_05tcc")
 position = Vector2(576, 676)
 shape = SubResource("RectangleShape2D_1hrul")
 
-[node name="ScoreLeft" type="Area2D" parent="."]
+[node name="WallLeft" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
 position = Vector2(-26, 324)
 shape = SubResource("RectangleShape2D_4i124")
 
-[node name="ScoreRight" type="Area2D" parent="."]
+[node name="WallRight" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
 position = Vector2(1184, 324)
 shape = SubResource("RectangleShape2D_4i124")
 
@@ -160,8 +160,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(576, 178)
 texture = ExtResource("7_s1a3i")
 
-[connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
-[connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
+[connection signal="body_entered" from="WallLeft" to="." method="_on_wall_left_hit"]
+[connection signal="body_entered" from="WallRight" to="." method="_on_wall_right_hit"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
-[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_hay_bail_collider_body_entered"]
+[connection signal="body_entered" from="HayBail1/HayBailCollider" to="." method="_on_area_2d_body_entered"]
