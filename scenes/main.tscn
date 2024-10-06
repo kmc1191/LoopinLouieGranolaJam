@@ -26,10 +26,10 @@ size = Vector2(1152, 56)
 size = Vector2(84, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4tg8"]
-size = Vector2(84, 42.75)
+size = Vector2(79, 52.2188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obsrk"]
-size = Vector2(83, 23)
+size = Vector2(83, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5r8ph"]
 size = Vector2(1141, 30)
@@ -55,12 +55,14 @@ texture = ExtResource("1_gl74u")
 [node name="mainGameScreen" type="Node2D" parent="."]
 
 [node name="WallLeft" type="Area2D" parent="mainGameScreen"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallLeft"]
 position = Vector2(-26, 33.4375)
 shape = SubResource("RectangleShape2D_4i124")
 
 [node name="WallRight" type="Area2D" parent="mainGameScreen"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/WallRight"]
 position = Vector2(1184, -12.7813)
@@ -111,7 +113,7 @@ shape = SubResource("RectangleShape2D_do6y7")
 [node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail2/HayBailCollider"]
-position = Vector2(360, 524.625)
+position = Vector2(359.5, 525.469)
 shape = SubResource("RectangleShape2D_c4tg8")
 
 [node name="Area2D" type="Area2D" parent="mainGameScreen/HayBail2"]
@@ -137,14 +139,14 @@ shape = SubResource("RectangleShape2D_do6y7")
 [node name="HayBailCollider" type="Area2D" parent="mainGameScreen/HayBail1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/HayBailCollider"]
-position = Vector2(356, 521)
+position = Vector2(356, 524.891)
 shape = SubResource("RectangleShape2D_c4tg8")
 
 [node name="Area2D" type="Area2D" parent="mainGameScreen/HayBail1"]
 position = Vector2(359, 521)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/HayBail1/Area2D"]
-position = Vector2(-2.5, 18.5)
+position = Vector2(-2.5, 20)
 shape = SubResource("RectangleShape2D_obsrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="mainGameScreen/HayBail1"]
@@ -264,6 +266,7 @@ theme_override_fonts/font = ExtResource("2_4g85s")
 text = "ENTER"
 
 [node name="Area2D" type="Area2D" parent="mainGameScreen"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainGameScreen/Area2D"]
 position = Vector2(578, 553.625)

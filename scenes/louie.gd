@@ -25,3 +25,6 @@ func turn_around():
 	
 func jump():
 	velocity.y = -400
+
+func jump_off_wall():
+	velocity.y = -250

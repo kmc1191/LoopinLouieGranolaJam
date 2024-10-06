@@ -68,7 +68,7 @@ func game_restarted():
 
 func _on_wall_left_hit(body):
 	$mainGameScreen/Louie.turn_around()
-	$mainGameScreen/Louie.jump()
+	$mainGameScreen/Louie.jump_off_wall()
 
 func _on_hay_bail_collider_body_entered(body: Node2D) -> void:
 	if body.name == "Louie":
@@ -76,7 +76,7 @@ func _on_hay_bail_collider_body_entered(body: Node2D) -> void:
 
 func _on_wall_right_hit(body: Node2D) -> void:
 	$mainGameScreen/Louie.turn_around()
-	$mainGameScreen/Louie.jump()	
+	$mainGameScreen/Louie.jump_off_wall()	
 
 func _on_coop_1_area_body_entered(body: Node2D) -> void:
 	if body.name == "Louie":

@@ -15,6 +15,8 @@ var spring_up = preload("res://assets/BlueSpringExtended.png")
 
 var gameStarted = false
 
+var x_pos = position.x
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -35,5 +37,8 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			haybail_sprite.texture = idle_texture
 			spring_sprite.texture = spring_down
+	
+	# lock in X-position
+	position.x = x_pos
 
 	move_and_slide()

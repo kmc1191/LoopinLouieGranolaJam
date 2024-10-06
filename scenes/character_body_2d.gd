@@ -15,6 +15,8 @@ var down_texture = preload("res://assets/HaybaleDown.png")
 var spring_down_texture = preload("res://assets/SpringDown.png")
 var spring_up_texture = preload("res://assets/SpringExtended.png")
 
+var x_pos = position.x
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -36,4 +38,8 @@ func _physics_process(delta: float) -> void:
 			haybail_sprite.texture = idle_texture
 			spring_sprite.texture = spring_down_texture
 			
+	
+	# lock in X-position
+	position.x = x_pos
+	
 	move_and_slide()
